@@ -1,0 +1,9 @@
+add reqiurements.txt
+clean up code
+add scrolling selection for found files
+add moving cursor to text input
+key bindings for toggling:
+- hidden files
+- case sensitivity
+- regular expressions
+- showing file permissions
