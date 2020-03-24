@@ -70,12 +70,13 @@ try:
         # output = os.popen(f'ls "{path}" | grep "{filename}"').read()
 
         height, width = window.getmaxyx()
-        window.addstr(0, 0, str(height))
         window.addstr(1, 1, search_path)
         for index, name in enumerate(dirs):
             h = 3 + index
             if h >= height:
                 break
+            if len(name) >= width - 2:
+                name = name[: width - 5] + "..."
             window.addstr(3 + index, 1, name)
         window.refresh()
 
