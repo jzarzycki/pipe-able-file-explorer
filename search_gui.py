@@ -2,7 +2,6 @@
 
 import sys
 import os
-
 import curses
 
 
@@ -26,16 +25,12 @@ def auto_complete(search_path, filename):
 
 kwargs = {"show_hidden": False, "case_sensitive": False, "regex": False}
 
-
 # init screen and hide cursor
 window = curses.initscr()
 curses.curs_set(0)
 
-
-# switch output to TTY, in order to show GUI while piping
-# save the old std out so we can output data down the pipe
-prev_out = sys.stdout
-sys.stdout = open("/dev/tty", "w")
+# get location of the file used, to send the result output
+pipe_file = sys.argv[1]
 
 search_path = ""
 
@@ -81,7 +76,6 @@ try:
         window.refresh()
 
         b = window.getch()
-
         if b == 127:  # backspace - delete last character
             search_path = search_path[:-1]
         elif b == ord("\t"):  # tab - autocomplete
@@ -98,6 +92,6 @@ finally:
     curses.curs_set(1)
     curses.endwin()
 
-# revert the std out change and print the found value
-sys.stdout = prev_out
-print(search_path)
+with open(pipe_file, "w") as out:
+    out.write(search_path)
+    out.write("\n")

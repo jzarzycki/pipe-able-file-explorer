@@ -1,8 +1,12 @@
-clean up code
-add scrolling selection for found files
-add moving cursor to text input
-key bindings for toggling:
-- hidden files
-- case sensitivity
-- regular expressions
-- showing file permissions
+- clean up code
+- make the script always print the absolute path to a file
+- add scrolling selection for found files
+- add option to select multiple items
+- add moving cursor to text input
+- add ability to pipe selection options into the program (they will replace files)
+    - delimiter flag
+- key bindings and flags for toggling:
+    - hidden files
+    - case sensitivity
+    - regular expressions
+    - showing file permissions
