@@ -27,7 +27,6 @@ kwargs = {"show_hidden": False, "case_sensitive": False, "regex": False}
 
 # init screen and hide cursor
 window = curses.initscr()
-curses.curs_set(0)
 
 # get location of the file used, to send the result output
 pipe_file = sys.argv[1]
@@ -65,7 +64,6 @@ try:
         # output = os.popen(f'ls "{path}" | grep "{filename}"').read()
 
         height, width = window.getmaxyx()
-        window.addstr(1, 1, search_path)
         for index, name in enumerate(dirs):
             h = 3 + index
             if h >= height:
@@ -73,6 +71,7 @@ try:
             if len(name) >= width - 2:
                 name = name[: width - 5] + "..."
             window.addstr(3 + index, 1, name)
+        window.addstr(1, 1, search_path)
         window.refresh()
 
         b = window.getch()
@@ -88,8 +87,7 @@ try:
 
         window.clear()
 finally:
-    # clean up - show cursor and close screen
-    curses.curs_set(1)
+    # clean up - close screen
     curses.endwin()
 
 result = search_path.replace(' ', '\\ ')
