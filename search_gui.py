@@ -92,6 +92,8 @@ finally:
     curses.curs_set(1)
     curses.endwin()
 
+result = search_path.replace(' ', '\\ ')
+
 with open(pipe_file, "w") as out:
-    out.write(search_path)
+    out.write(result)
     out.write("\n")
