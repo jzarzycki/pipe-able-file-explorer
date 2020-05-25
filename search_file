@@ -6,10 +6,12 @@
 fifo=/tmp/search_gui_pipe-$(whoami)-$(date +%H-%M-%S-%N)
 [ ! -p "$fifo" ] && mkfifo $fifo
 
+# 
+project_dir=$(dirname `readlink -f $0`)
 # python script is called in background, with stdin/out
 # redirected to current tty, and location of the pipe file
 # passed as an argument (also pass all args for parsing)
-./search_gui.py "$fifo" $@ >/dev/tty </dev/tty &
+$project_dir/search_gui.py "$fifo" $@ >/dev/tty </dev/tty &
 
 # write the program output to stdout and remove the pipe file afterwards
 cat "$fifo" && rm "$fifo"
