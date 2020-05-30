@@ -6,7 +6,7 @@ It can fork it's output between the current terminal window, and stdout, in orde
 ./selectcli.sh > path.txt
 
 # this will show a GUI gor selecting a file and open in in less pager
-./selectcli.sh | xargs less
+less $(./selectcli.sh)
 ```
 
 # Controls
