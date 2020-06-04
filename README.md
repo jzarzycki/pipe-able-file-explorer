@@ -3,10 +3,10 @@ Script is meant to be used as a GUI for selecting files inside a linux scripts o
 It can fork it's output between the current terminal window, and stdout, in order to provide a dmenu utility inside of the terminal window.
 ```bash
 # this will show a GUI for selecting a file and write the path to selected file to path.txt 
-./selectcli.sh > path.txt
+selectcli.sh > path.txt
 
 # this will show a GUI gor selecting a file and open in in less pager
-less $(./selectcli.sh)
+less $(selectcli.sh)
 ```
 
 # Controls
