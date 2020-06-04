@@ -3,7 +3,7 @@
 # GUI and the output meant to go further down the pipe
 
 # a pipe is created to catch the the wanted output
-fifo=/tmp/search_gui_pipe-$(whoami)-$(date +%H-%M-%S-%N)
+fifo=/tmp/search_gui_pipe-$(whoami)-$(date +%s)
 [ ! -p "$fifo" ] && mkfifo $fifo
 
 # 
