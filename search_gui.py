@@ -27,6 +27,7 @@ kwargs = {"show_hidden": False, "case_sensitive": False, "regex": False}
 
 # init screen and hide cursor
 window = curses.initscr()
+curses.noecho()
 
 # get location of the file used, to send the result output
 pipe_file = sys.argv[1]
